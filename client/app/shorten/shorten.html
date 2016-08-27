@@ -1,9 +1,19 @@
 <div id='container'>
 <!-- Your code here -->
-  <form>
-    <input class='text' type='text' name='url'/>
+  <div class='navigation'>
+    <ul>
+      <li> <a href='/#/links' class='index'>All Links</a> </li>
+      <li> <a href='/#/shorten' class='create'>Shorten</a> </li>
+    </ul>    
+  </div> 
+  <form name="shortenForm" ng-submit='addLink()' ng-controller='ShortenController'>
+    <input class='text' type='text' name='url' ng-model="links.url" ng-pattern="links.word" required ng-trim="false">
+    <span ng-show="shortenForm.url.$error.required">Required!</span>
+    <span ng-show="shortenForm.url.$error.pattern">Wrong Patter!</span>
     <input type='submit' value="shorten" />
   </form>
+  <img class="spinner" src="/assets/spiffygif_46x46.gif">
+  <div class="message"></div>
 </div>
 
 
